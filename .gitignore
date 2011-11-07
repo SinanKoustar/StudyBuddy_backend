@@ -1,0 +1,42 @@
+bin/
+out/
+database.db
+
+# IDE's project files #
+######################
+.idea/
+*.iml
+.idea/workspace.xml
+.idea/dictionaries/
+.idea/inspectionProfiles/
+
+.classpath
+.project
+
+
+# Temp files #
+######################
+*~
+*.swp
+*.bak
+
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+
+# LaTeX files #
+#######################
+*.log
+*.aux
+*.idx
+*.lof
+*.lol
+*.lot
+*.nlo
+*.out
+*.toc
