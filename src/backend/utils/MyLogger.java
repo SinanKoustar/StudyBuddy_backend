@@ -8,27 +8,25 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * Initialize bullet-in logger
- *
+ * <p/>
  * Howto use:
- *  LOGGER.info("Logger: Information...");
- *  LOGGER.severe("Logger: Fehler...");
- *
+ * LOGGER.info("Logger: Information...");
+ * LOGGER.severe("Logger: Fehler...");
  *
  * @author asteinbr
  * @date 11/3/11
  */
-public class MyLogger
-{
+public class MyLogger {
     public static void setup() throws IOException
     {
-       	Logger logger;
+        Logger logger;
         logger = Logger.getLogger("");
-		logger.setLevel(Level.SEVERE);
+        logger.setLevel(Level.SEVERE);
 
-        FileHandler loggerOutput = new FileHandler("MyLoggerOutput");
+        FileHandler loggerOutput = new FileHandler("MyLoggerOutput.txt");
         SimpleFormatter formatOutput = new SimpleFormatter();
 
-		loggerOutput.setFormatter(formatOutput);
-		logger.addHandler(loggerOutput);
+        loggerOutput.setFormatter(formatOutput);
+        logger.addHandler(loggerOutput);
     }
 }

@@ -1,39 +1,44 @@
 package backend;
 
-import billboard.BillBoard;
-import billboard.BillBoardImpl;
 import webservice.server.SOAPServer;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Logger;
 
 /**
  * @author asteinbr
  * @date 11/3/11
  */
-public class Main
-{
+public class Main {
     private final static Logger LOGGER = Logger.getLogger(Main.class.getName());
 
-    private static ArrayList<BillBoard> billBoardList = BillBoardImpl.getInstance().getBillBoardList();
-    //private static BillBoard billBoard = BillBoardImpl.getInstance().getBillBoard();
+    private static ArrayList<BlackBoardEntry> blackBoardList = new ArrayList<BlackBoardEntry>();
 
-    private static void createDemoSet()
+    private static void createDemoData()
     {
-        billBoardList.add(new BillBoard(1, "Suche Wohnung im Nordend", "Hallo ich Suche eine Wohnung zum 1.1.2012 im Nordend.", "Dirk K.", BillBoard.getCurrentDate(), true));
-        billBoardList.add(new BillBoard(2,"Suche Wohnung im Westend", "Hallo ich Suche ein Loft zum 1.1.2012 im Westend.", "Wolfgang P.", BillBoard.getCurrentDate(), true));
+        blackBoardList.add(
+                new BlackBoardEntry(1, "Suche Villa im Taunus", "Zum 1.3.2012 suche ich eine Villa mit min. 500qm Wohnflaeche im Taunus.", "Murat D.", new Date(), Boolean.TRUE));
+        blackBoardList.add(
+                new BlackBoardEntry(2, "Suche Wohnung im Westend", "Hallo ich Suche ein Loft zum 1.1.2012 im Westend.", "Wolfgang P.", new Date(), Boolean.TRUE));
+    }
+
+    private static void printData()
+    {
+        for (BlackBoardEntry bbe : blackBoardList)
+            LOGGER.info(bbe.toString());
     }
 
     public static void main(String[] args)
     {
-        createDemoSet();
+        createDemoData();
+        printData();
 
         try
         {
             SOAPServer soapServer = new SOAPServer();
             LOGGER.info("SOAPServer is running...");
-        }
-        catch (NullPointerException npe)
+        } catch (NullPointerException npe)
         {
             LOGGER.severe(npe.getMessage());
         }
